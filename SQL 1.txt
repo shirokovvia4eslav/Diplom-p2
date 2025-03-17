@@ -1,0 +1,10 @@
+Задание 1
+Представь: тебе нужно проверить, отображается ли созданный заказ в базе данных.
+Для этого: выведи список логинов курьеров с количеством их заказов в статусе «В доставке» (поле inDelivery = true). 
+
+SELECT  c.login AS "Courier", 
+        COUNT(o."inDelivery") AS "Orders in delivery" 
+FROM "Orders" AS o -- первая таблица с заказами "Orders" 
+INNER JOIN "Couriers" AS c ON o."courierId" = c.id 
+WHERE o."inDelivery" = true 
+GROUP BY c.login; 
